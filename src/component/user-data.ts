@@ -5,7 +5,7 @@ const key = "user-data"
 
 interface UserData {
     name: string,
-    key: string,
+    secret: string,
 }
 
 const readUserData = (): Array<UserData> => {
