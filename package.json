@@ -1,0 +1,57 @@
+{
+    "name": "vsc-2fa",
+    "displayName": "vsc-2fa",
+    "description": "A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.",
+    "publisher": "cai-qichang",
+    "version": "1.0.0",
+    "engines": {
+        "vscode": "^1.94.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "2fa"
+    ],
+    "extensionKind": [
+        "ui",
+        "workspace"
+    ],
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": true
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/caiqichang/vsc-2fa"
+    },
+    "main": "out/extension.js",
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "contributes": {
+        "commands": [
+            {
+                "command": "2fa",
+                "title": "2FA"
+            }
+        ]
+    },
+    "scripts": {
+        "prepackage": "node script/pre-package.js && npm run compile",
+        "package": "npx --package @vscode/vsce vsce package -o build/",
+        "compile": "tsc --project ./",
+        "watch": "tsc --watch --project ./"
+    },
+    "devDependencies": {
+        "@types/node": "^22.7.5",
+        "@types/vscode": "^1.94.0",
+        "typescript": "^5.6.3"
+    },
+    "dependencies": {
+        "@vscode/codicons": "^0.0.36",
+        "@vscode/webview-ui-toolkit": "^1.4.0",
+        "vue": "^3.5.12"
+    }
+}
