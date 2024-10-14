@@ -32,10 +32,7 @@ class TfaIpc {
                     break;
                 }
                 case Operation.SaveUserData: {
-                    this.sendMessage({
-                        operation: Operation.ReadUserData,
-                        parameter: userData.writeUserData(message.parameter as Array<userData.UserData>),
-                    })
+                    userData.writeUserData(message.parameter as Array<userData.UserData>)
                     break;
                 }
                 case Operation.ExportUserData: {

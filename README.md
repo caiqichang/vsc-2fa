@@ -2,15 +2,17 @@
 
 A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.
 
+***This extension is without any server side.***
+
 Get from 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=cai-qichang.vsc-2fa) 
 or 
 [OpenVSX](https://open-vsx.org/extension/cai-qichang/vsc-2fa)
 
 ## Features
-- Multiple 2FA keys managing support
-- User data synchronizing support
-- User data Exporting support
+- Multiple 2FA keys management support
+- User data synchronization support (via Visual Studio Code extension synchronization)
+- User data export support
 
 ## Usage
 - Using command `2fa` to open 2FA Manager Pannel.

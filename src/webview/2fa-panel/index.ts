@@ -22,7 +22,7 @@ class TfaPanel {
         this.panel.webview.html = fileUtil.readExtensionFile("static/2fa-panel.html").toString()
             .replaceAll("${extensionPath}", common.createWebviewUri(this.panel, "").toString())
             .replaceAll("${version}", Math.random().toString())
-            TfaIpc.instance().setWebview(this.panel)
+        TfaIpc.instance().setWebview(this.panel)
     }
 
     public showPanel = (cmd: command.CommandName, args: any[]) => {

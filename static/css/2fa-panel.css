@@ -1,18 +1,56 @@
-[v-cloak] {
+[v-cloak]
+{
     display: none;
 }
 
-* {
+*
+{
     font-family: var(--vscode-editor-font-family);
     font-size: var(--vscode-editor-font-size);
 }
 
-body {
+body
+{
     padding: 0 10px;
 }
 
-.app .seconds {
+.app .inline_block
+{
     display: inline-block;
+}
+
+.app .seconds
+{
     width: 20px;
     text-align: center;
+}
+
+.app .btn_div
+{
+    text-align: right;
+}
+
+.app .input_field
+{
+    width: 100%;
+}
+
+.app vscode-button
+{
+    margin-left: 10px;
+}
+
+.app .table_top
+{
+    height: 26px;
+}
+
+.app .float_right
+{
+    float: right;
+}
+
+.app .text_align_btn
+{
+    margin: 5px 0;
 }

@@ -9,15 +9,51 @@
 <body>
     <div id="app" v-cloak class="app">
         <div>
-
+            <div>
+                <vscode-text-field class="input_field" v-model="state.inputData.name">Name:</vscode-text-field>
+            </div>
+            <div>
+                <vscode-text-field class="input_field" v-model="state.inputData.secret">Secret:</vscode-text-field>
+            </div>
+            <div class="btn_div">
+                <vscode-button @click="saveAction"><span slot="start" class="codicon codicon-save"></span>Save</vscode-button>
+            </div>
         </div>
 
         <vscode-divider></vscode-divider>
 
         <div>
-            <div>Expired in <div class="seconds">{{ remain }}</div> seconds.</div>
-            <div>
+            <div>Message: {{ state.message }}</div>
+            <div class="btn_div" v-if="state.confirmBtn">
+                <vscode-button @click="confirmAction"><span slot="start" class="codicon codicon-check"></span>Confirm</vscode-button>
+                <vscode-button @click="cancelAction"><span slot="start" class="codicon codicon-close"></span>Cancel</vscode-button>
+            </div>
+        </div>
 
+        <vscode-divider></vscode-divider>
+
+        <div>
+            <div class="table_top">
+                <div class="inline_block text_align_btn">Expired in <div class="inline_block seconds">{{ remain }}</div> seconds.</div>
+                <div class="inline_block btn_div float_right">
+                    <vscode-button @click="exportUserData"><span slot="start" class="codicon codicon-cloud-download"></span>Export</vscode-button>
+                </div>
+            </div>
+            <div>
+                <vscode-data-grid>
+                    <vscode-data-grid-row row-type="header">
+                        <vscode-data-grid-cell cell-type="columnheader" grid-column="1">Name</vscode-data-grid-cell>
+                        <vscode-data-grid-cell cell-type="columnheader" grid-column="2">Code</vscode-data-grid-cell>
+                        <vscode-data-grid-cell cell-type="columnheader" grid-column="3"></vscode-data-grid-cell>
+                    </vscode-data-grid-row>
+                    <vscode-data-grid-row v-for="i in state.list" :key="i.secret">
+                        <vscode-data-grid-cell grid-column="1" class="text_align_btn">{{ i.name }}</vscode-data-grid-cell>
+                        <vscode-data-grid-cell grid-column="2" class="text_align_btn">{{ i.code }}</vscode-data-grid-cell>
+                        <vscode-data-grid-cell grid-column="3">
+                            <vscode-button @click="removeAction(i)"><span slot="start" class="codicon codicon-trash"></span>Remove</vscode-button>
+                        </vscode-data-grid-cell>
+                    </vscode-data-grid-row>
+                </vscode-data-grid>
             </div>
         </div>
     </div>
