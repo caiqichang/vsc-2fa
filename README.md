@@ -21,4 +21,4 @@ or
 
 ## Donation
 
-Support me by AFDIAN: https://afdian.net/a/caiqichang
+Support me by AFDIAN: https://afdian.com/a/caiqichang
