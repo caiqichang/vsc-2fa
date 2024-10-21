@@ -46,7 +46,7 @@
                         <vscode-data-grid-cell cell-type="columnheader" grid-column="2">Code</vscode-data-grid-cell>
                         <vscode-data-grid-cell cell-type="columnheader" grid-column="3"></vscode-data-grid-cell>
                     </vscode-data-grid-row>
-                    <vscode-data-grid-row v-for="i in state.list" :key="i.secret">
+                    <vscode-data-grid-row v-for="i in state.list" :key="i.name">
                         <vscode-data-grid-cell grid-column="1" class="text_align_btn">{{ i.name }}</vscode-data-grid-cell>
                         <vscode-data-grid-cell grid-column="2" class="text_align_btn">{{ i.code }}</vscode-data-grid-cell>
                         <vscode-data-grid-cell grid-column="3">

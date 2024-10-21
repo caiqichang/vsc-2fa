@@ -145,11 +145,6 @@ const app = Vue.createApp({
                 this.state.message = `[Name] existed.`
                 return;
             }
-            let existSecret = this.state.list.filter(i => i.secret === this.state.inputData.secret)
-            if (existSecret.length > 0) {
-                this.state.message = `[Secret] is same as secret of [${existSecret[0].name}]`
-                return;
-            }
 
             this.state.list.unshift({
                 name: this.state.inputData.name,
