@@ -19,7 +19,7 @@ or
 ## Usage
 - Using command `2fa` to open 2FA Manager Pannel.
 
-![2fa_command-screenshot](https://github.com/caiqichang/vsc-2fa/raw/HEAD/resources/screenshot/2fa_command.gif)
+![2fa_command-screenshot](resources/screenshot/2fa_command.gif)
 
 ## Donation
 
