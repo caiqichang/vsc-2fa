@@ -1,5 +1,7 @@
 # vsc-2fa
 
+![logo](resources/logo.png)
+
 A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.
 
 **This extension is without any server side.**

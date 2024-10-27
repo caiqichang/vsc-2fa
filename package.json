@@ -3,7 +3,7 @@
     "displayName": "vsc-2fa",
     "description": "A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.",
     "publisher": "cai-qichang",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "engines": {
         "vscode": "^1.94.0"
     },
@@ -26,8 +26,8 @@
         "type": "git",
         "url": "https://github.com/caiqichang/vsc-2fa"
     },
+    "icon": "resources/logo.png",
     "markdown": "github",
-    "pricing": "Free",
     "sponsor": {
         "url": "https://afdian.com/a/caiqichang"
     },
