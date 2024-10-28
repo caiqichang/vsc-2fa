@@ -105,8 +105,8 @@ const app = Vue.createApp({
         async get2faCode(content) {
             const to_hex = str => {
                 const arr = new Uint8Array(Math.ceil(str.length / 2))
-                for (let i = 0; i < str.length;) {
-                    arr[i / 2] = parseInt(str.slice(i, i += 2), 16)
+                for (let i = 0; i < str.length; i += 2) {
+                    arr[i / 2] = parseInt(str.substring(i, i + 2), 16)
                 }
                 return arr
             }
