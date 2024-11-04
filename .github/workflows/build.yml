@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     
       - name: Checkout
@@ -15,7 +15,7 @@ jobs:
       
       - name: Install Dependencies and Package
         run: |
-          npm install
+          sudo npm install
           npm run package
       
       - name: Upload a Build Artifact
