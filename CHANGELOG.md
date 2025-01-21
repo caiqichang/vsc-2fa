@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.6
+- Add file name for file that decoded from base64.
+
 ## 1.0.5
 - Add Regular Expression test.
 - Add Base64 convertor.

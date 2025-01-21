@@ -19,6 +19,11 @@
         .top5px {
             margin-top: 5px;
         }
+
+        .btnGroup {
+            display: flex;
+            flex-direction: row;
+        }
     </style>
 </head>
 
@@ -27,9 +32,11 @@
         <div>
             <div>Base64 Code:</div>
             <vscode-text-area style="width: 100%;" rows="5" resize="vertical" class="top5px" v-model="state.base64Code"></vscode-text-area>
-            <div class="top5px">
+            <div class="top5px btnGroup">
                 <vscode-button class="button-item" @click="decodeToText">Decode to Text</vscode-button>
                 <vscode-button class="button-item" @click="decodeToFile()">Decode to File</vscode-button>
+                <div style="line-height: 28px; margin-right: 10px;">File Name: </div>
+                <vscode-text-field style="width: calc(100% - 310px);" v-model="state.filename"></vscode-text-field>
             </div>
             <vscode-divider></vscode-divider>
             <div>Raw Text:</div>
@@ -71,6 +78,7 @@
                         message: "",
                         inputFile: null,
                         toConsole: false,
+                        filename: null,
                     },
                     reader: new FileReader()
                 }
@@ -109,7 +117,7 @@
                         if (!base64) base64 = this.state.base64Code
                         if (base64) {
                             let binary = atob(base64)
-                            exportFile(binary, new Date().toJSON())
+                            exportFile(binary, this.state.filename ? this.state.filename : new Date().getTime())
                         }
                         this.state.message = ""
                     })
