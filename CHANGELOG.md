@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.5
+- Add Regular Expression test.
+- Add Base64 convertor.
+
 ## 1.0.4
 - Optimision.
 

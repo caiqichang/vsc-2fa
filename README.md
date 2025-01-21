@@ -15,6 +15,8 @@ or
 - Multiple 2FA keys management support
 - User data synchronization support (via Visual Studio Code Extensions Synchronization)
 - User data export support
+- Base64 Convertor
+- Regular Expression Test
 
 ## Usage
 - Using command `2fa` to open 2FA Manager Pannel.

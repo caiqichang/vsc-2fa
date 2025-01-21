@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="${extensionPath}/node_modules/@vscode/codicons/dist/codicon.css?v=${version}">
+    <link rel="stylesheet" href="${extensionPath}/static/css/util.css?v=${version}">
+
+    <style>
+        html,
+        body,
+        .app {
+            height: 100%;
+        }
+
+        .button-item {
+            margin-right: 10px;
+        }
+
+        .top5px {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak class="app">
+        <div>
+            <div>Base64 Code:</div>
+            <vscode-text-area style="width: 100%;" rows="5" resize="vertical" class="top5px" v-model="state.base64Code"></vscode-text-area>
+            <div class="top5px">
+                <vscode-button class="button-item" @click="decodeToText">Decode to Text</vscode-button>
+                <vscode-button class="button-item" @click="decodeToFile()">Decode to File</vscode-button>
+            </div>
+            <vscode-divider></vscode-divider>
+            <div>Raw Text:</div>
+            <vscode-text-area style="width: 100%;" rows="5" resize="vertical" class="top5px" v-model="state.rawText"></vscode-text-area>
+            <div class="top5px">
+                <vscode-button class="button-item" @click="encodeToBase64FromText">Encode to Base64</vscode-button>
+            </div>
+            <vscode-divider></vscode-divider>
+            <div>Input File (under 50MB):</div>
+            <input type="file" class="top5px" @change="inputFileChange"/>
+            <div class="top5px">
+                <vscode-button class="button-item" @click="encodeToBase64FromFile">Encode to Base64</vscode-button>
+            </div>
+            <div class="top5px">
+                Note: For larger file, open Developer Tools and change to current iframe's Console. 
+                Setting variable <code>appInstance.state.toConsole</code> to true, than the base64 code will be output to Console.
+                And using function <code>appInstance.decodeToFile(base64)</code> to decode base64 code to file.
+            </div>
+            <vscode-divider></vscode-divider>
+            <div>Message:</div>
+            <div>{{ state.message }}</div>
+        </div>
+    </div>
+
+    <script type="module" src="${extensionPath}/node_modules/@vscode/webview-ui-toolkit/dist/toolkit.min.js?v=${version}"></script>
+    <script src="${extensionPath}/node_modules/vue/dist/vue.global.prod.js?v=${version}"></script>
+    <script src="${extensionPath}/static/js/util.js?v=${version}"></script>
+    <script>
+        "use strict"
+
+        const colorTheme = "${colorTheme}"
+
+        const app = Vue.createApp({
+            data() {
+                return {
+                    state: {
+                        base64Code: "",
+                        rawText: "",
+                        message: "",
+                        inputFile: null,
+                        toConsole: false,
+                    },
+                    reader: new FileReader()
+                }
+            },
+            watch: {
+                state: {
+                    deep: true,
+                    handler() {
+                        this.setState()
+                    }
+                }
+            },
+            created() {
+
+            },
+            methods: {
+                getState() {
+                    let state = vscode.getState()
+                    if (state) {
+                        this.state = copy(state)
+                    }
+                },
+                setState() {
+                    vscode.setState(copy(this.state))
+                },
+                decodeToText() {
+                    if (this.state.base64Code) {
+                        this.handle(() => {
+                            this.state.rawText = atob(this.state.base64Code)
+                        })
+                    }
+                },
+                decodeToFile(base64) {
+                    this.handle(() => {
+                        this.state.message = "Pending ..."
+                        if (!base64) base64 = this.state.base64Code
+                        if (base64) {
+                            let binary = atob(base64)
+                            exportFile(binary, new Date().toJSON())
+                        }
+                        this.state.message = ""
+                    })
+                },
+                encodeToBase64FromText() {
+                    if (this.state.rawText) {
+                        this.handle(() => {
+                            this.state.base64Code = btoa(this.state.rawText)
+                        })
+                    }
+                },
+                encodeToBase64FromFile() {
+                    this.handle(() => {
+                        this.state.message = "Pending ..."
+                        if (this.state.inputFile && this.state.inputFile.length > 0) {
+                            this.reader.readAsDataURL(this.state.inputFile[0])
+                            this.reader.onload = () => {
+                                if (this.reader.result) {
+                                    let array = this.reader.result.split("base64,")
+                                    if (array.length > 1) {
+                                        if (this.state.toConsole) {
+                                            console.log(array[1])
+                                        } else {
+                                            this.state.base64Code = array[1]
+                                        }
+                                    }
+                                }
+                                this.state.message = ""
+                            }
+                        }
+                    })
+                },
+                handle(fn) {
+                    this.state.message = ""
+                    try {
+                        fn()
+                    }catch(error) {
+                        console.log(error)
+                        this.state.message = error
+                    }
+                },
+                inputFileChange(event) {
+                    this.state.inputFile = event.target.files
+                },
+            }
+        })
+
+        app.config.compilerOptions.isCustomElement = tag => tag.startsWith("vscode-")
+
+        const appInstance = app.mount("#app")
+
+    </script>
+</body>
+
+</html>

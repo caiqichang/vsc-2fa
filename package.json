@@ -3,7 +3,7 @@
     "displayName": "vsc-2fa",
     "description": "A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.",
     "publisher": "cai-qichang",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "engines": {
         "vscode": "^1.94.0"
     },
@@ -40,6 +40,14 @@
             {
                 "command": "2fa",
                 "title": "2FA"
+            },
+            {
+                "command": "base64",
+                "title": "Base64 Convertor"
+            },
+            {
+                "command": "regexp",
+                "title": "Regular Expression Test"
             }
         ]
     },
