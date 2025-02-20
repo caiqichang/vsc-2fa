@@ -22,6 +22,3 @@ or
 - Using command `2fa` to open 2FA Manager Pannel.
 
 ![2fa_command-screenshot](resources/screenshot/2fa_command.gif)
-
-## Donation
-Support me by AFDIAN: https://afdian.com/a/caiqichang
