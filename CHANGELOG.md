@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.7
+- Bug fix.
+
 ## 1.0.6
 - Add file name for file that decoded from base64.
 
