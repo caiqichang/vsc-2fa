@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.0.9
+- Optimize 2FA manager.
+
 ## 1.0.8
 - Update dependencies.
 

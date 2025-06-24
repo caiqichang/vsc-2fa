@@ -59,12 +59,14 @@ const app = Vue.createApp({
             switch (data.operation) {
                 case this.Operation.ReadUserData: {
                     this.state.list = data.parameter
+                    this.state.list.sort((l, r) => l.name.localeCompare(r.name))
                     this.updateCode()
                     break;
                 }
             }
         },
         saveUserData() {
+            this.state.list.sort((l, r) => l.name.localeCompare(r.name))
             vscode.postMessage({
                 operation: this.Operation.SaveUserData,
                 parameter: this.state.list.map(i => {
@@ -172,6 +174,9 @@ const app = Vue.createApp({
             this.state.confirmItem = null
             this.state.message = ""
             this.state.confirmBtn = false
+        },
+        copyAction(row) {
+            navigator.clipboard.writeText(row.code)
         },
     },
 })
