@@ -11,3 +11,8 @@ Get from
 - User data export support
 - Base64 Convertor
 - Regular Expression Test
+
+## Usage
+- Using command `2FA` to open 2FA Manager Pannel.
+- Using command `Base64 Convertor` to open Base64 Convertor Pannel.
+- Using command `Regular Expression Test` to open Regular Expression Test Pannel.
