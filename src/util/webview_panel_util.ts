@@ -5,7 +5,6 @@ import * as common from "../util/common"
 const initWebviewPanel = (id: string, title: string, htmlPath: string) => {
     let panel: vscode.WebviewPanel | null = common.createWebviewPanel(id, title)
     panel.onDidDispose(() => panel = null)
-    panel.iconPath = common.createUri("/resources/logo.png")
     panel.webview.html = fileUtil.readExtensionFile(htmlPath).toString()
         .replaceAll("${extensionPath}", common.createWebviewUri(panel, "").toString())
         .replaceAll("${version}", Math.random().toString())
