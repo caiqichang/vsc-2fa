@@ -8,10 +8,10 @@ jobs:
     steps:
     
       - name: Checkout
-        uses: actions/checkout@v5.0.0
+        uses: actions/checkout@v6.0.1
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@v6.0.0
+        uses: actions/setup-node@v6.1.0
       
       - name: Install Dependencies and Package
         run: |
@@ -19,7 +19,7 @@ jobs:
           npm run package
       
       - name: Upload a Build Artifact
-        uses: actions/upload-artifact@v5.0.0
+        uses: actions/upload-artifact@v6.0.0
         with:
           name: vsc-2fa
           path: build/

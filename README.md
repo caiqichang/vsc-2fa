@@ -2,7 +2,7 @@
 
 A Two-Factor Authentication (2FA) manager extension for Visual Studio Code.
 
-![example](/example.png)
+![screenshot](/screenshot.png)
 
 Get from 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=cai-qichang.vsc-2fa) 

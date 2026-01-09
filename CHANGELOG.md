@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.1.2
+- Add screenshot in README.
+- Update dependencies.
+
 ## 1.1.1
 - Update dependencies.
 
